@@ -5,7 +5,7 @@ public class Person {
     enum Gender {
         Male, Female;
     }
-    private static ArrayList<Person> people = new ArrayList<Person>();
+    protected static ArrayList<Person> people = new ArrayList<Person>();
     private String name;
     private Gender gender;
     private int weight;
@@ -42,6 +42,10 @@ public class Person {
         people.add(temp);
         return(temp);
     }
+    public static void addPerson(Person _person)
+    {
+        people.add(_person);
+    }
     Person()
     {
         name = "None";
@@ -57,6 +61,7 @@ public class Person {
         bmonth = _month;
         byear = _year;
     }
+    
     public void setName(String _name)
     {
         name = _name;

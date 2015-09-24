@@ -8,6 +8,8 @@ public class Course {
     private Type type;
     private String name;
     private int period;
+    
+    
     public static Course addCourse(String _name, Type _type, int _period)
     {
         Course temp = new Course (_name,_type,_period);
@@ -26,6 +28,7 @@ public class Course {
         type = _type;
         period = _period;
     }
+   
      public void setName(String _name)
     {
         name = _name;

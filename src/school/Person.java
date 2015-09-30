@@ -3,42 +3,22 @@ import java.util.ArrayList;
 import java.util.Calendar;
 public class Person {
     enum Gender {
-        Male, Female;
+        Male,Female
     }
     protected static ArrayList<Person> people = new ArrayList<Person>();
     private String name;
     private Gender gender;
     private int weight;
-    private int bday;
-    private int bmonth;
-    private int byear;
     
-    public void setBirthdate(int _day, int _month, int _year)
+    private int birthDay;
+    private int birthMonth;
+    private int birthYear;
+    
+
+    public static Person addPerson(String _name,
+    Gender _gender, int _weight)
     {
-        bday =_day;
-        bmonth = _month;
-        byear = _year;
-    }
-    public int getAge()
-    {
-        Calendar now =Calendar.getInstance();
-        int day = now.get(Calendar.DAY_OF_MONTH);
-        int month = now.get(Calendar.MONTH) + 1;
-        int year = now.get(Calendar.YEAR);
-        year--;
-        if(bmonth < month)
-            year++;
-        else if(bmonth == month)
-        {
-            if(bday <= day)
-                year++;
-        }
-        int age = year - byear;
-        return(age);
-    }
-    public static Person addPerson(String _name, Gender _gender, int _weight, int _day, int _month, int _year)
-    {
-        Person temp = new Person (_name,_gender,_weight,_day,_month,_year);
+        Person temp = new Person(_name,_gender,_weight);
         people.add(temp);
         return(temp);
     }
@@ -48,28 +28,51 @@ public class Person {
     }
     Person()
     {
-        name = "None";
-        gender = Gender.Male;
-        weight = 0;
+        name = "NoneForSure";
+        gender = Gender.Female;
+        weight = 100;
     }
-    Person(String _name, Gender _gender, int _weight, int _day, int _month, int _year)
+    Person(String _name,Gender _gender,int _weight)
     {
         name = _name;
         gender = _gender;
         weight = _weight;
-        bday = _day;
-        bmonth = _month;
-        byear = _year;
-    }
+    }   
     
-    public void setName(String _name)
+    public void setBirthdate
+    (int _day,int _month,int _year)
     {
-        name = _name;
+        birthDay = _day;
+        birthMonth = _month;
+        birthYear = _year;
+          
     }
+    public int getAge()
+    {
+        Calendar now = Calendar.getInstance();
+        int day = now.get(Calendar.DAY_OF_MONTH);
+        int month = now.get(Calendar.MONTH) + 1;
+        int year = now.get(Calendar.YEAR);
+        return(0);
+    }
+ 
+    
     public void setWeight(int _weight)
     {
         weight = _weight;
     }
+    public int getWeight()
+    {
+        return(weight);
+    }       
+    public void setName(String _name)
+    {
+        name = _name;
+    }
+    public String getName()
+    {
+        return(name);
+    }    
     public void setGender(Gender _gender)
     {
         gender = _gender;
@@ -77,23 +80,27 @@ public class Person {
     public Gender getGender()
     {
         return(gender);
-    }
-    public int getWeight()
+    }  
+    public static void printNames()
     {
-        return(weight);
+        System.out.println("============");
+        for (int index=0;index<people.size();index++)
+        {
+                System.out.println(people.get(index).getName());
+        }        
     }
-    public String getName()
+    public static void printNames(Gender _gender)
     {
-        return(name);
-    }
-    public static void printName(Gender _gender)
+        System.out.println("============" + _gender);
+        for (Person temp : people)
+        {
+            if (temp.gender == _gender)
+                System.out.println(temp.getName());
+        }
+             
+    }    
+    public String toString()
     {
-        System.out.println("==========");
-        for( Person temp : people)
-            {
-                if(temp.gender == _gender)
-                System.out.println(temp.getName() + ", "+ temp.weight+"lb, Age: " + temp.getAge());
-            }
-
+        return(name + " " + gender + " " + weight);
     }
 }

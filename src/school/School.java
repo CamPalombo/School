@@ -1,26 +1,44 @@
 package school;
 public class School {
     public static void main(String[] args) {
+        Student joe =  Student.addStudent("Joe",Person.Gender.Male,120,10);
+        Student jill =  Student.addStudent("Jill",Person.Gender.Female,105,9);
+        Student billyJoe =  Student.addStudent("BillyJoe",Person.Gender.Male,210,12);
+        Student bobby =  Student.addStudent("Bobby",Person.Gender.Male,168,11);        
+        Student ann =  Student.addStudent("Annie",Person.Gender.Female,98,9);        
+        Student sean =  Student.addStudent("Sean",Person.Gender.Male,138,11);        
+                
+        Teacher price = Teacher.addTeacher("Price", Person.Gender.Male, 206,4.7);
+        Teacher hudson = Teacher.addTeacher("Hudson", Person.Gender.Female, 106,7.2);
+        Teacher anderson = Teacher.addTeacher("Anderson", Person.Gender.Female, 112,3.2);
+        Teacher smith = Teacher.addTeacher("Smith", Person.Gender.Male, 152,8.2);
+        Teacher jones = Teacher.addTeacher("Jones", Person.Gender.Female, 102,1.2);
         
-        Course Math = Course.addCourse("Math", Course.Type.Math, 1);
-        Course English = Course.addCourse("English", Course.Type.English, 2);
-        Course Science = Course.addCourse("Science", Course.Type.Science, 3);
-        Course PE = Course.addCourse("PE", Course.Type.PE, 4);
-        Course Elective = Course.addCourse("Elective", Course.Type.Elective, 5);
-        Person Joe = Person.addPerson("Joe",Person.Gender.Male,120,6,6,2000);
-        Person Jill = Person.addPerson("Jill",Person.Gender.Female,115,8,11,2000);
-        Person Fats = Person.addPerson("Fats",Person.Gender.Male,9000000,8,8,2000);
-        Person Uber = Person.addPerson("Ubermensch",Person.Gender.Male,145,17,9,1995);
-        Person.printName(Person.Gender.Male);
-        Course.printClasses();
-        Course.printClass(Course.Type.PE);
+        Course geom =  Course.addCourse("Geometry", Course.Type.Math, 1);
+        Course photo =  Course.addCourse("Photography", Course.Type.Elective, 3);       
+        Course biology =  Course.addCourse("Biology", Course.Type.Science, 2);       
+        Course worldHistory =  Course.addCourse("WorldHistory", Course.Type.History, 2);       
+
+        geom.addStudent(bobby, 2.2);
+        photo.addStudent(jill, 4.0);
+        biology.addStudent(ann, 3.5);
+        photo.addStudent(ann, 2.9);
+        worldHistory.addStudent(sean, 3.8);
+         
+        geom.addTeacher(price);
+        photo.addTeacher(anderson);
+        biology.addTeacher(smith);
+        worldHistory.addTeacher(hudson);
         
-        Student bobby =
-        Student.addStudent("Bobby",Person.Gender.Male,1,1,1,1,1);
-        Student.addStudent("Bobby",Person.Gender.Male,1,1,1,1,1);
-     //   Student bobby = new Student ("Bobby",Person.Gender.Male,168,11,1,1,1);
-        System.out.println(bobby.getName());
-        Student.printName();
         
+        Course.printNames();
+        Person.printNames();
+        Student.printNames();
+        Teacher.printNames();
+        System.out.println(bobby.getHighestGPA());
+//        getHighestGPA();
+//        mostElectiveCourses();
+        Student.printNamesGPAGreaterThan(3.5);
+        price.printStudentGradeLevel(11);
     }
 }
